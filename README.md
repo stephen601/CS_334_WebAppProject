@@ -1,4 +1,4 @@
-# CS334 Team repository
+# CS 334 Team Pages Repository
 ## 1. Web Addresses:
   * https://stephen601.github.io/CS_334_WebAppProject/
   * https://revisionary-cockpit.000webhostapp.com/
