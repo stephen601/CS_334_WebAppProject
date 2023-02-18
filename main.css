@@ -23,22 +23,4 @@ ul {
  display: inline-block;
  text-align: left;
 }
- dl {
-    border: 30px double darkgreen;
-    padding: 0.5em;
-  }
-  dt {
-    float: left;
-    clear: left;
-    width: 100px;
-    text-align: center;
-    font-weight: bold;
-    color: green;
-  }
-  dt::after {
-    content: ":";
-  }
-  dd {
-    margin: 0 0 0 110px;
-    padding: 0 0 0.5em 0;
-  }
+
