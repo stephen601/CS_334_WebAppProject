@@ -9,20 +9,27 @@
     <img id="iceCream0" />
     <div id="name1"></div>
     <img id="iceCream1" />
+    <div id="name2"></div>
+    <img id="iceCream2" />
     <script>
         fetch("iceCream.json")
             .then(response => response.json())
             .then(data => {
                 console.log(data[0].Name, data[0].iceCream);
                 console.log(data[1].Name, data[1].iceCream);
+                console.log(data[2].Name, data[2].iceCream);
                 document.querySelector("#name0").innerText = data[0].Name;
                 document.querySelector("#name1").innerText = data[1].Name;
+                document.querySelector("#name2").innerText = data[2].Name;
                 const imageUrl0 = data[0].iceCream;
                 const imageUrl1 = data[1].iceCream;
+                const imageUrl2 = data[2].iceCream;
                 const img0 = document.getElementById('iceCream0');
                 const img1 = document.getElementById('iceCream1');
+                const img2 = document.getElementById('iceCream2');
                 img0.src = imageUrl0;
                 img1.src = imageUrl1;
+                img2.src = imageUrl2;
             })
     </script>
 </body>
