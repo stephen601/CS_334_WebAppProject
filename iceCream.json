@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "Vinilla",
+    "iceCream": "/images/ice_cream1.jfif"
+  },
+  {
+    "Name": "Chocolate",
+    "iceCream": "/images/"
+  }
+]

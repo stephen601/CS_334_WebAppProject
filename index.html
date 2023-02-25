@@ -1,13 +1,22 @@
-<!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Ice Cream Capital</title>
-<!--  <link href="main.css" rel="stylesheet" type="text/css" />-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ice Cream Shop</title>
 </head>
 <body>
-  
+    <div id="name"></div>
+    <img id="iceCream" />
+    <script>
+        fetch("iceCream.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data[0].Name, data[0].iceCream);
+                document.querySelector("#name").innerText = data[0].Name;
+                const imageUrl = data[0].iceCream;
+                const img = document.getElementById('iceCream');
+                img.src = imageUrl;
+            })
+    </script>
 </body>
 </html>
