@@ -10,5 +10,9 @@
   {
     "Name": "Neapolitan",
     "iceCream": "./images/neapolitan.jfif"
+  },
+  {
+    "Name": "Strawberry",
+    "iceCream": "./images/strawberry.jfif"
   }
 ]
