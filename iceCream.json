@@ -1,14 +1,14 @@
 [
   {
     "Name": "Vanilla",
-    "iceCream": "/images/vanilla.jfif"
+    "iceCream": "./images/vanilla.jfif"
   },
   {
     "Name": "Chocolate",
-    "iceCream": "/images/chocolate.jfif"
+    "iceCream": "./images/chocolate.jfif"
   },
   {
     "Name": "Neapolitan",
-    "iceCream": "/images/neapolitan.jfif"
+    "iceCream": "./images/neapolitan.jfif"
   }
 ]
