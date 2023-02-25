@@ -2,25 +2,6 @@ html {
   height: 100%;
   width: 100%;
 }
-h1{color: white;
-   text-align: center;
-  background-color: darkgreen;
-  }
-h2{
-  color:darkgreen;
-  -webkit-text-stroke-color: white;
-  text-align: center;
-  }
-p{color: white;
-  font-size: 20px;
- -webkit-text-stroke-width: 1px;
- -webkit-text-stroke-color: black;
- text-align: center;}
-body{background-color: lightgreen;
-   }
-div{text-align: center;}
-ul {
- display: inline-block;
- text-align: left;
-}
+
+
 
