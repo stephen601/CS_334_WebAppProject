@@ -1,10 +1,10 @@
 [
   {
     "Name": "Vinilla",
-    "iceCream": "images/vinilla.jfif"
+    "iceCream": "./images/vinilla.jfif"
   },
   {
     "Name": "Chocolate",
-    "iceCream": "images/chocolate.jfif"
+    "iceCream": "./images/chocolate.jfif"
   }
 ]
