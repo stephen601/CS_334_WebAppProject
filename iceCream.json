@@ -12,6 +12,26 @@
     "iceCream": "./images/neapolitan.jfif"
   },
   {
+    "Name": "Chocolate Chip",
+    "iceCream": "./images/chocolate_chip.jfif"
+  },
+  {
+    "Name": "Butter Pecan",
+    "iceCream": "./images/butter_pecan.jfif"
+  },
+  {
+    "Name": "Matcha",
+    "iceCream": "./images/matcha.jfif"
+  },
+  {
+    "Name": "Egg Nog",
+    "iceCream": "./images/egg_nog.jfif"
+  },
+  {
+    "Name": "Mint Chocolate Chip",
+    "iceCream": "./images/mint_chocolate_chip.jfif"
+  },
+  {
     "Name": "Strawberry",
     "iceCream": "./images/strawberry.jfif"
   }
