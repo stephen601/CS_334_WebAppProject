@@ -34,5 +34,65 @@
   {
     "Name": "Strawberry",
     "iceCream": "./images/strawberry.jfif"
+  },
+  {
+    "Name": "Cookie Dough",
+    "iceCream": "./images/cookie_dough.jfif"
+  },
+  {
+    "Name": "Cookies and Creme",
+    "iceCream": "./images/cookies_creme.jfif"
+  },
+  {
+    "Name": "Rocky Road",
+    "iceCream": "./images/rocky_road.jfif"
+  },
+  {
+    "Name": "Coffee",
+    "iceCream": "./images/coffee.jfif"
+  },
+  {
+    "Name": "Pistachio",
+    "iceCream": "./images/pistachio.jfif"
+  },
+  {
+    "Name": "Cake Batter",
+    "iceCream": "./images/cake_batter.jfif"
+  },
+  {
+    "Name": "Caramel",
+    "iceCream": "./images/caramel.jfif"
+  },
+  {
+    "Name": "Butterscotch",
+    "iceCream": "./images/butterscotch.jfif"
+  },
+  {
+    "Name": "Chocolate Peanut Butter",
+    "iceCream": "./images/chocolate_peanutebutter.jfif"
+  },
+  {
+    "Name": "Maple",
+    "iceCream": "./images/maple.jfif"
+  },
+  {
+    "Name": "Moose Track",
+    "iceCream": "./images/moose_track.jfif"
+  },
+  {
+    "Name": "Strawberry Cheesecake",
+    "iceCream": "./images/strawberry_cheesecake.jfif"
+  },
+  {
+    "Name": "Confetti",
+    "iceCream": "./images/confetti.jfif"
+  },
+  {
+    "Name": "Banana",
+    "iceCream": "./images/banana.jfif"
+  },
+  {
+    "Name": "Tutti Frutti",
+    "iceCream": "./images/tutti_frutti.jfif"
   }
 ]
