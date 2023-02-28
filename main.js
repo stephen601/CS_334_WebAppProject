@@ -1,4 +1,4 @@
-﻿fetch("iceCream.json")
+/* fetch("iceCream.json")
     .then(response => response.json())
     .then(data => {
     console.log(data[0].Name, data[0].iceCream);
@@ -121,4 +121,15 @@ img20.src = imageUrl20;
 img21.src = imageUrl21;
 img22.src = imageUrl22;
 img23.src = imageUrl23;
-})
+}) */
+fetch("iceCream.json")
+  .then(response => response.json())
+  .then(data => {
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i].Name, data[i].iceCream);
+      document.querySelector(`#name${i}`).innerText = data[i].Name;
+      document.getElementById(`iceCream${i}`).src = data[i].iceCream;
+    }
+  });
+
+
