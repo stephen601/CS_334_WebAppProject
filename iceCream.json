@@ -1,15 +1,18 @@
 [
   {
     "Name": "Vanilla",
-    "iceCream": "./images/vanilla.jfif"
+    "iceCream": "./images/vanilla.jfif",
+    "cost": 1.00
   },
   {
     "Name": "Chocolate",
-    "iceCream": "./images/chocolate.jfif"
+    "iceCream": "./images/chocolate.jfif",
+    "cost":1.50
   },
   {
     "Name": "Neapolitan",
-    "iceCream": "./images/neapolitan.jfif"
+    "iceCream": "./images/neapolitan.jfif",
+    "cost": 2.00
   },
   {
     "Name": "Chocolate Chip",
