@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ice Cream Store</title>
+	<style>
+		body {
+			background-color: babyblue;
+			text-align: center;
+		}
+
+		/* Center logo and title */
+		.logo {
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.title-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			text-align: center;
+		}
+
+		.title-icon {
+			display: block;
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+
+		.title {
+			font-size: 28px;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		/* Lower icons */
+		.icon {
+			display: block;
+			margin: 0 auto;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		/* Icon descriptions */
+		.description {
+			margin-top: 10px;
+			text-align: center;
+		}
+
+		/* Grid layout for ice cream images */
+		.image-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 20px;
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		/* Style for ice cream images */
+		.ice-cream {
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+
+		/* Style for ice cream image captions */
+		.ice-cream-caption {
+			margin-top: 10px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<!-- Center logo and title -->
+	<div class="logo">
+		<img src="images/LOGO.png" alt="Logo" width="100">
+	</div>
+	<div class="title-wrapper">
+		<div>
+			<img src="images/icon_left.png" alt="Icon Left" class="title-icon">
+		</div>
+		<div>
+			<div class="title">     Albuquerque Softserve        </div>
+		</div>
+		<div>
+			<img src="images/icon_right.png" alt="Icon Right" class="title-icon">
+		</div>
+	</div>
+
+	<!-- Ice cream images with captions -->
+	<div class="image-grid">
+		<div>
+			<img src="images/banana.jfif" alt="Banana" class="ice-cream">
+			<p class="ice-cream-caption">Banana</p>
+		</div>
+		<div>
+			<img src="images/butter_pecan.jfif" alt="Butter Pecan" class="ice-cream">
+			<p class="ice-cream-caption">Butter Pecan</p>
+		</div>
+		<div>
+			<img src="images/butterscotch.jfif" alt="Butterscotch" class="ice-cream">
+			<p class="ice-cream-caption">Butterscotch</p>
+		</div>
+		<div>
+			<img src="images/butterscotch.jfif" alt="Butterscotch" class="ice-cream">
+			<p class="ice-cream-caption">Butterscotch</p>
+		</div><div>
+			<img src="images/butterscotch.jfif" alt="Butterscotch" class="ice-cream">
+			<p class="ice-cream-caption">Butterscotch</p>
+		</div><div>
+			<img src="images/butterscotch.jfif" alt="Butterscotch" class="ice-cream">
+			<p class="ice-cream-caption">Butterscotch</p>
+		</div>
+
+
+	<div class="icon">
+		<a href="page1.html">
+			<img src="icon1.png" alt="Icon 1" width="50">
+		</a>
+		<div class="description">
+			<p>Description of icon 1</p>
+		</div>
+	</div>
+
+	<div class="icon">
+		<a href="page2.html">
+			<img src="icon2.png" alt="Icon 2" width="50">
+		</a>
+		<div class="description">
+			<p>Description of icon 2</p>
+		</div>
+	</div>
+</body>
+</html>
