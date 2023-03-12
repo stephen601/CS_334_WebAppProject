@@ -1,11 +1,440 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Management</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      div.col-md-4{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
 </head>
 <body>
 
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="./icecreamLOGO.png" width="30" height='30' alt="">
+      </a>  
+      <a class="navbar-brand" href="#">Scoops of Joy Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#items-start">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#orders-start">Orders</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+    <main role="main" style="padding-top: 50px;">
+
+    <section class="jumbotron text-center" id="items-start" >
+      <div class="container">
+        <h1 class="jumbotron-heading">Manage Items</h1>
+      </div>
+    </section>
+
+    <button type="button" class="btn-btn-sm btn-outline-secondary" style="margin-left: 10%;">Add Flavor</button>
+     <div id="items" class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+
+            
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/banana.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Banana</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/butter_pecan.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Butter Pecan</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/butterscotch.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Butterscotch</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/cake_batter.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Cake Batter</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/caramel.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Caramel</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/chocolate.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Chocolate</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/chocolate_chip.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Chocolate Chip</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/chocolate_peanutbutter.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Chocolate Peanut Butter</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/coffee.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Coffee</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/confetti.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Confetti</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/cookie_dough.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Cookie Dough</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/cookies_creme.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Cookie Creme</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/egg_nog.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Eggnog</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/maple.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Maple</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/matcha.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Matcha</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/mint_chocolate_chip.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Mint Chocolate Chip</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/moose_track.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Moose Track</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/neapolitan.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Neapolitan</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/pistachio.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Pistachio</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/rocky_road.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Rocky Road</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/strawberry.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Strawberry</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-image-top" src="./images/strawberry_cheesecake.jfif" alt="Thumbnail [100%x225]" style="height: 255px; width:100%; display:block">
+                <div class="card-body">
+                  <p class="card-text">Strawberry Cheesecake</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" class="btn-btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+     </div>
+    
+     <section class="jumbotron text-center" id="orders-start">
+      <div class="container">
+        <h1 class="jumbotron-heading">Manage Orders</h1>
+      </div>
+    </section>
+
+     <div id="orders">
+      <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="margin: 20px 20px 20px 20px;">
+  <thead>
+    <tr>
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">Number of Items
+      </th>
+      <th class="th-sm">Price
+      </th>
+      <th class="th-sm">Date
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brad H</td>
+      <td>4</td>
+      <td>$9.83</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Paul N</td>
+      <td>7</td>
+      <td>$13.42</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Stanley R</td>
+      <td>12</td>
+      <td>$25.60</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Stephen V</td>
+      <td>14</td>
+      <td>$30.58</td>
+      <td>2020-02-04</td>
+    </tr>
+  </tbody>
+
+     </div>
+    </main>
 </body>
 </html>
