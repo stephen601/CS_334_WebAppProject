@@ -11,9 +11,7 @@ function showCashOption() {
 function showCardOption() {
     // show card information input field
     document.getElementById("card-info").style.display = "block";
-    // hide cash button
-    // document.getElementById("cash-button").style.display = "none";
-    // adjust margin of payment-options to make space for card-info
+   
     document.getElementById("payment-options").style.marginBottom = "100px";
 }
 
@@ -69,8 +67,8 @@ function generateItemsHtml(iceCreamItems) {
     return html;
 }
 
-// Define array of test ice cream items
-// Define array of test ice cream items
+// Array used for testing. This may also be used to recieve 
+//array of list ice cream from another page to pre set up the checkout page.
 const testIceCreamItems = [0, 2, 4, 5];
 const initialQuantities = [1, 1, 2, 4];
 
