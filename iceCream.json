@@ -101,18 +101,22 @@
   },
   {
     "Name": "Strawberry Cheesecake",
-    "iceCream": "./images/strawberry_cheesecake.jfif"
+    "iceCream": "./images/strawberry_cheesecake.jfif",
+    "price": 5.50
   },
   {
     "Name": "Confetti",
-    "iceCream": "./images/confetti.jfif"
+    "iceCream": "./images/confetti.jfif",
+    "price": 6.50
   },
   {
     "Name": "Banana",
-    "iceCream": "./images/banana.jfif"
+    "iceCream": "./images/banana.jfif",
+    "price": 6.00
   },
   {
     "Name": "Tutti Frutti",
-    "iceCream": "./images/tutti_frutti.jfif"
+    "iceCream": "./images/tutti_frutti.jfif",
+    "price": 5.00
   }
 ]
