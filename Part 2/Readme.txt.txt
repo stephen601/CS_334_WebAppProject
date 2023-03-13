@@ -1,7 +1,7 @@
 Ryan Bolson: Login page "Withdrawn"
-Stephen Villanueva: Manager page
-Noah Caulfield: Index page
-Stephen Washington:Checkout page
+Stephen Villanueva: Manager page/Login page
+Noah Caulfield: Index page/execution.pdf
+Stephen Washington:Checkout page/JSON/Readme.txt
 
 Our webpages will be hosted off of the root directory of the repository.
 
