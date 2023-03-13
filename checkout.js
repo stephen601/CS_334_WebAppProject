@@ -69,7 +69,7 @@ function generateItemsHtml(iceCreamItems) {
 
 // Array used for testing. This may also be used to recieve 
 //array of list ice cream from another page to pre set up the checkout page.
-const testIceCreamItems = [0, 2, 4, 5];
+const testIceCreamItems = [0, 6, 4, 5];
 const initialQuantities = [1, 1, 2, 4];
 
 
