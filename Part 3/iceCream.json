@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Vanilla",
+    "imageSrc": "./images/vanilla.jfif",
+    "price": 2.00
+  },
+  {
+    "name": "Chocolate",
+    "imageSrc": "./images/chocolate.jfif",
+    "price": 2.50
+  },
+  {
+    "name": "Neapolitan",
+    "imageSrc": "./images/neapolitan.jfif",
+    "price": 3.00
+  },
+  {
+    "name": "Chocolate Chip",
+    "imageSrc": "./images/chocolate_chip.jfif",
+    "price": 3.50
+  },
+  {
+    "name": "Butter Pecan",
+    "imageSrc": "./images/butter_pecan.jfif",
+    "price": 4.00
+  },
+  {
+    "name": "Matcha",
+    "imageSrc": "./images/matcha.jfif",
+    "price": 4.50
+  },
+  {
+    "name": "Egg Nog",
+    "imageSrc": "./images/egg_nog.jfif",
+    "price": 5.00
+  },
+  {
+    "name": "Mint Chocolate Chip",
+    "imageSrc": "./images/mint_chocolate_chip.jfif",
+    "price": 5.50
+  },
+  {
+    "name": "Strawberry",
+    "imageSrc": "./images/strawberry.jfif",
+    "price": 6.00
+  },
+  {
+    "name": "Cookie Dough",
+    "imageSrc": "./images/cookie_dough.jfif",
+    "price": 6.50
+  },
+  {
+    "name": "Cookies and Creme",
+    "imageSrc": "./images/cookies_creme.jfif",
+    "price": 7.00
+  },
+  {
+    "name": "Rocky Road",
+    "imageSrc": "./images/rocky_road.jfif",
+    "price": 7.50
+  },
+  {
+    "name": "Coffee",
+    "imageSrc": "./images/coffee.jfif",
+    "price": 8.00
+  },
+  {
+    "name": "Pistachio",
+    "imageSrc": "./images/pistachio.jfif",
+    "price": 8.50
+  },
+  {
+    "name": "Cake Batter",
+    "imageSrc": "./images/cake_batter.jfif",
+    "price": 9.00
+  },
+  {
+    "name": "Caramel",
+    "imageSrc": "./images/caramel.jfif",
+    "price": 9.50
+  },
+  {
+    "name": "Butterscotch",
+    "imageSrc": "./images/butterscotch.jfif",
+    "price": 10.00
+  },
+  {
+    "name": "Chocolate Peanut Butter",
+    "imageSrc": "./images/chocolate_peanutbutter.jfif",
+    "price": 10.50
+  },
+  {
+    "name": "Maple",
+    "imageSrc": "./images/maple.jfif",
+    "price": 11.00
+  },
+  {
+    "name": "Moose Track",
+    "imageSrc": "./images/moose_track.jfif",
+    "price": 11.50
+  },
+  {
+    "Name": "Strawberry Cheesecake",
+    "iceCream": "./images/strawberry_cheesecake.jfif",
+    "price": 5.50
+  },
+  {
+    "Name": "Confetti",
+    "iceCream": "./images/confetti.jfif",
+    "price": 6.50
+  },
+  {
+    "Name": "Banana",
+    "iceCream": "./images/banana.jfif",
+    "price": 6.00
+  },
+  {
+    "Name": "Tutti Frutti",
+    "iceCream": "./images/tutti_frutti.jfif",
+    "price": 5.00
+  }
+]

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      div.col-md-4{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+      img.card-image-top{
+        height: 255px;
+        width: 255px;
+        display: block;
+      }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="./images/LOGO.png" width="30" height='30' alt="">
+      </a>  
+      <a class="navbar-brand" href="#">Scoops of Joy Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#items-start">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#orders-start">Orders</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+    <main role="main" style="padding-top: 50px;">
+
+    <section class="jumbotron text-center" id="items-start" >
+      <div class="container">
+        <h1 class="jumbotron-heading">Manage Items</h1>
+      </div>
+    </section>
+
+    <button type="button" id="addFlavor" class="btn-btn-sm btn-outline-secondary" style="margin-left: 10%;">Add Flavor</button>
+     <div id="items" class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row" id="iceCreamCenter"></div>
+            <script>
+
+              fetch('./iceCream.json')
+                .then((response) => response.json())
+                .then((iceCreamElements) => {
+
+                  var thetablediv = document.getElementById("iceCreamCenter");
+
+                  for(let j=0; j<iceCreamElements.length; j++){
+                    if(localStorage.getItem(iceCreamElements[j].name) === null){
+                      localStorage.setItem(iceCreamElements[j].name, JSON.stringify([iceCreamElements[j].price, iceCreamElements[j].imageSrc, true]));
+                    }
+                    else{
+                      
+                    }
+                    
+                  }
+
+                  // Iterate through list of icecreams from JSON
+                  for(let i=0; i<localStorage.length; i++){
+                    
+                    thePrice = JSON.parse(localStorage.getItem(localStorage.key(i)))[0];
+                      
+
+                    // If the icecream hasn't been deleted, do things
+                    if(JSON.parse(localStorage.getItem(localStorage.key(i)))[2] === false){
+
+                    }
+                    else{
+                      var firstDiv = document.createElement('div');
+                      firstDiv.className = 'col-md-4';
+                      firstDiv.id = localStorage.key(i) + ' card';
+
+                      var secondDiv = firstDiv.appendChild(document.createElement('div'));
+                      secondDiv.className = 'card mb-4 box-shadow';
+
+                      var theImage = secondDiv.appendChild(document.createElement('img'));
+                      theImage.className = 'card-image-top';
+                      theImage.src = JSON.parse(localStorage.getItem(localStorage.key(i)))[1];
+
+                      var thirdDiv = secondDiv.appendChild(document.createElement('div'));
+                      thirdDiv.className = 'card-body';
+
+                      var thirdDivText = thirdDiv.appendChild(document.createElement('p'));
+                      thirdDivText.className = 'card-text';
+                      thirdDivText.innerHTML = localStorage.key(i);
+
+                      var thirdDivPrice = thirdDiv.appendChild(document.createElement('p'));
+                      thirdDivPrice.className = 'card-text';
+                      thirdDivPrice.innerHTML = "$" + thePrice;
+                      thirdDivPrice.id = localStorage.key(i) + ' price';
+
+                      var fourthDiv = thirdDiv.appendChild(document.createElement('div'));
+                      fourthDiv.className = 'd-flex justify-content-between align-items-center';
+
+                      var fifthDiv = fourthDiv.appendChild(document.createElement('div'));
+                      fifthDiv.className = 'btn-group';
+
+                      var buttonOne = fifthDiv.appendChild(document.createElement('button'));
+                      buttonOne.type = 'button';
+                      buttonOne.className = "btn-btn-sm btn-outline-secondary deleteButton";
+                      buttonOne.id = localStorage.key(i) + ' delete';
+                      buttonOne.innerHTML = 'Delete';
+
+                      var buttonTwo = fifthDiv.appendChild(document.createElement('button'));
+                      buttonTwo.type = 'button';
+                      buttonTwo.className = "btn-btn-sm btn-outline-secondary editButton";
+                      buttonTwo.id = localStorage.key(i) + ' edit';
+                      buttonTwo.innerHTML = 'Edit';
+
+                      thetablediv.appendChild(firstDiv);
+
+                    }
+                  }
+                });
+            </script>
+      
+        </div>
+     </div>
+    
+     <section class="jumbotron text-center" id="orders-start">
+      <div class="container">
+        <h1 class="jumbotron-heading">Manage Orders</h1>
+      </div>
+    </section>
+
+     <div id="orders">
+      <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="margin: 20px 20px 20px 20px;">
+  <thead>
+    <tr>
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">Number of Items
+      </th>
+      <th class="th-sm">Price
+      </th>
+      <th class="th-sm">Date
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brad H</td>
+      <td>4</td>
+      <td>$9.83</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Paul N</td>
+      <td>7</td>
+      <td>$13.42</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Stanley R</td>
+      <td>12</td>
+      <td>$25.60</td>
+      <td>2020-02-04</td>
+    </tr>
+    <tr>
+      <td>Stephen V</td>
+      <td>14</td>
+      <td>$30.58</td>
+      <td>2020-02-04</td>
+    </tr>
+  </tbody>
+
+     </div>
+    </main>
+    
+</body>
+<script type="text/javascript" src="manager.js" defer></script>
+</html>
