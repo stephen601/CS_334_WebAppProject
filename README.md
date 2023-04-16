@@ -13,4 +13,5 @@
   * [Checkout Page](https://stephen601.github.io/CS_334_WebAppProject/checkout)
   * [Login Page](https://stephen601.github.io/CS_334_WebAppProject/login)
 ## 3. Notes:
- 
+  *Checkout and payment html, css, and js removed for new implementation.
+  *Files were moved/archived to the part 3 folder.
