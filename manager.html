@@ -142,47 +142,72 @@
     </section>
 
      <div id="orders">
-      <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="margin: 20px 20px 20px 20px;">
-  <thead>
-    <tr>
-      <th class="th-sm">Name
-      </th>
-      <th class="th-sm">Number of Items
-      </th>
-      <th class="th-sm">Price
-      </th>
-      <th class="th-sm">Date
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Brad H</td>
-      <td>4</td>
-      <td>$9.83</td>
-      <td>2020-02-04</td>
-    </tr>
-    <tr>
-      <td>Paul N</td>
-      <td>7</td>
-      <td>$13.42</td>
-      <td>2020-02-04</td>
-    </tr>
-    <tr>
-      <td>Stanley R</td>
-      <td>12</td>
-      <td>$25.60</td>
-      <td>2020-02-04</td>
-    </tr>
-    <tr>
-      <td>Stephen V</td>
-      <td>14</td>
-      <td>$30.58</td>
-      <td>2020-02-04</td>
-    </tr>
-  </tbody>
+        <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="margin: 20px 20px 20px 20px;">
+          <thead>
+            <tr>
+              <th class="th-sm">Name
+              </th>
+              <th class="th-sm">Number of Items
+              </th>
+              <th class="th-sm">Price
+              </th>
+              <th class="th-sm">Date
+              </th>
+              <th class="th-sm">Manage
+              </th>
+            </tr>
+          </thead>
+          <tbody id='dynamicTableBody'>
+            <script>
 
+              theTableBody = document.getElementById("dynamicTableBody");
+
+              fetch('./orders.json')
+                .then((response) => response.json())
+                .then((orderElements) => {
+
+                  for(let k=0; k<orderElements.length; k++){
+
+                    var theRow = document.createElement("tr");
+
+                    var nameColumn = theRow.appendChild(document.createElement("td"));
+                    nameColumn.innerHTML = orderElements[k].name;
+
+                    var itemsColumn = theRow.appendChild(document.createElement("td"));
+                    itemsColumn.innerHTML = orderElements[k].numItems;
+
+                    var priceColumn = theRow.appendChild(document.createElement("td"));
+                    priceColumn.innerHTML = orderElements[k].price;
+
+                    var dateColumn = theRow.appendChild(document.createElement("td"));
+                    dateColumn.innerHTML = orderElements[k].date;
+
+                    var buttonColumn = theRow.appendChild(document.createElement('td'));
+                    var viewOrderButton = document.createElement("button");
+                    viewOrderButton.type = 'button';
+                    viewOrderButton.className = "btn-btn-sm btn-outline-secondary viewOrder";
+                    viewOrderButton.id = orderElements[k].id + ' view';
+                    viewOrderButton.innerHTML = "View";
+                    buttonColumn.appendChild(viewOrderButton);
+
+                    var refundOrderButton = document.createElement("button");
+                    refundOrderButton.type = 'button';
+                    refundOrderButton.className = "btn-btn-sm btn-outline-secondary refundOrder";
+                    refundOrderButton.id = orderElements[k].id + ' refund';
+                    refundOrderButton.innerHTML = "Refund";
+                    buttonColumn.appendChild(refundOrderButton);
+
+                    theTableBody.append(theRow);
+
+                  }
+
+                });
+
+            </script>
+          </tbody>
+        </table>
      </div>
+
     </main>
     
 </body>
