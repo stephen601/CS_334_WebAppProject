@@ -20,12 +20,12 @@ window.onload = function(){
             }
             else{
                 // All new icecreams default to the image of chocolate icecream.
-                localStorage.setItem(newIcecreamName, JSON.stringify([newIcecreamPrice, "./images/chocolate.jfif", true]))
+                localStorage.setItem(newIcecreamName, JSON.stringify([newIcecreamPrice, "./images/chocolate.jfif", true]));
                 window.location.reload();
             }
         }
 
-    })
+    });
 
 
     // Edit Icecream:
@@ -33,24 +33,21 @@ window.onload = function(){
         editButtons[i].addEventListener("click", function() {
 
             // Get type of icecream by ID
-            iceCreamType = editButtons[i].id.split(" ");
+            iceCreamType = deleteButtons[i].id;
 
-            // If the icecream name has a space in it, fix it
-            if(iceCreamType.length > 2){
-                iceCreamType = iceCreamType[0] + ' ' + iceCreamType[1];
-            }
-            else{
-                iceCreamType = iceCreamType[0];
-            }
+            // Fix icecream name
+            lastIndex = iceCreamType.lastIndexOf(" ");
+            iceCreamType = iceCreamType.substring(0, lastIndex);
 
             newPrice = prompt("Enter the new price: ");
             if(newPrice === null){
                 return;
             }
             else{
+                console.log(iceCreamType);
                 theImage = JSON.parse(localStorage.getItem(iceCreamType))[1];
 
-                localStorage.setItem(iceCreamType, JSON.stringify([newPrice, theImage, true]))
+                localStorage.setItem(iceCreamType, JSON.stringify([newPrice, theImage, true]));
 
                 priceElement = document.getElementById(iceCreamType + ' price');
                 priceElement.innerHTML = '$' + newPrice;
@@ -109,6 +106,7 @@ window.onload = function(){
 
                     for(let j=0; j<orderElements.length; j++){
                         if(specificOrder == orderElements[j].id){
+                            console.log("Item Viewed");
                             alert(orderElements[j].items);
                         }
                         else{
@@ -138,6 +136,7 @@ window.onload = function(){
 
                     for(let j=0; j<orderElements.length; j++){
                         if(specificOrder == orderElements[j].id){
+                            console.log("Refund Initiated");
                             confirmation = confirm("Are you sure you want to refund this order?");
                             if(confirmation == false){
                                 return;
