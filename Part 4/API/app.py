@@ -16,80 +16,65 @@ def db_connection():
 @app.route("/ice_cream", methods=["GET", "POST"])
 def ice_cream():
     conn = db_connection()
-    cursor = conn.execute("SELECT * FROM ice_cream")
-    ice_cream = [
-        dict(id=row[0], name=row[1], price = row[2])
-        for row in cursor.fetchall()
-    ]
-    if ice_cream is not None:
-        return jsonify(ice_cream)
+    cursor = conn.cursor()
+    
+    if request.method=="GET":
+        cursor = conn.execute("SELECT * FROM ice_cream")
+        ice_cream = [
+            dict(id=row[0], name=row[1], price = row[2])
+            for row in cursor.fetchall()
+        ]
+        if ice_cream is not None:
+            return jsonify(ice_cream)
+    
+    if request.method == "POST":
+        new_name = request.form["name"]
+        new_price = request.form["price"]
+        
+        sql = """INSERT INTO ice_cream (name, price)
+                 VALUES (?,?)"""
+        
+        cursor = cursor.execute(sql, (new_name, new_price))
+        conn.commit()
+        return f"Ice creame with the id: {cursor.lastrowid} created sussessfully", 201
+   
+@app.route("/ice_cream/<int:id>", methods=["GET", "PUT", "DELETE"])
+def single_ice_cream(id):
+    conn = db_connection()
+    cursor = conn.cursor()
+    ice_cream = None
+    if request.method == "GET":
+        cursor.execute("SELECT * FROM ice_cream WHERE id=?", (id,))
+        rows = cursor.fetchall()
+        for r in rows:
+            ice_cream = r
+        if ice_cream is not None:
+            return jsonify(ice_cream), 200
+        else:
+            return "Something wrong", 404
 
-# @app.route('/')
-# def hello():
-#     return 'Hello World!'
+    if request.method == "PUT":
+        sql = """UPDATE ice_cream
+                SET name=?,
+                    price=?
+                WHERE id=? """
 
-# table = db['ice_cream']
+        name = request.form["name"]
+        price = request.form["price"]
+        updated_ice_cream = {
+            "id": id,
+            "name": name,
+            "price": price
+        }
+        conn.execute(sql, (name, price, id))
+        conn.commit()
+        return jsonify(updated_ice_cream)
 
-
-# def fetch_db(ice_cream_id):  # Each book scnerio
-#     return table.find_one(ice_cream_id=ice_cream_id)
-
-
-# def fetch_db_all():
-#     ice_cream = []
-#     for ice_cream in table:
-#         ice_cream.append(ice_cream)
-#     return ice_cream
-
-
-# @app.route('/api/db_populate', methods=['GET'])
-# def db_populate():
-#     table.insert({
-#         "ice_cream_id": "1",
-#         "name": "Vinilla",
-#         "price": 5.99
-#     })
-
-#     table.insert({
-#         "ice_cream_id": "2",
-#         "name": "Chocolate",
-#         "price": 2.00
-#     })
-
-#     return make_response(jsonify(fetch_db_all()),
-#                          200)
-
-
-# @app.route('/api/ice_cream', methods=['GET', 'POST'])
-# def api_ice_cream():
-#     if request.method == "GET":
-#         return make_response(jsonify(fetch_db_all()), 200)
-#     elif request.method == 'POST':
-#         content = request.json
-#         ice_cream_id = content['ice_cream']
-#         table.insert(content)
-#         return make_response(jsonify(fetch_db(ice_cream_id)), 201)  # 201 = Created
-
-
-# @app.route('/api/ice_cream/<ice_cream_id>', methods=['GET', 'PUT', 'DELETE'])
-# def api_each_ice_cream(ice_cream_id):
-#     if request.method == "GET":
-#         ice_cream_obj = fetch_db(ice_cream_id)
-#         if ice_cream_obj:
-#             return make_response(jsonify(ice_cream_obj), 200)
-#         else:
-#             return make_response(jsonify(ice_cream_obj), 404)
-#     elif request.method == "PUT":  # Updates the ice cream
-#         content = request.json
-#         table.update(content, ['ice_cream_id'])
-
-#         book_obj = fetch_db(ice_cream_id)
-#         return make_response(jsonify(ice_cream_obj), 200)
-#     elif request.method == "DELETE":
-#         table.delete(id=ice_cream_id)
-
-#         return make_response(jsonify({}), 204)
-
+    if request.method == "DELETE":
+        sql = """ DELETE FROM ice_cream WHERE id=? """
+        conn.execute(sql, (id,))
+        conn.commit()
+        return "The ice cream with id: {} has been deleted.".format(id), 200
 
 
 if __name__ == '__main__':
