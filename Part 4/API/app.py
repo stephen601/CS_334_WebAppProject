@@ -50,10 +50,15 @@ def single_ice_cream(id):
         rows = cursor.fetchall()
         for r in rows:
             ice_cream = r
+        # if ice_cream is not None:
+        #     return jsonify(ice_cream), 200
+        # else:
+        #     return "Something wrong", 404
         if ice_cream is not None:
-            return jsonify(ice_cream), 200
+            ice_cream = {"id": ice_cream[0], "name": ice_cream[1], "price": ice_cream[2], "image": ice_cream[3]}
+            return jsonify(ice_cream)
         else:
-            return "Something wrong", 404
+            return jsonify({"message": "Ice cream not found"}), 404
 
     if request.method == "PUT":
         sql = """UPDATE ice_cream
@@ -80,7 +85,7 @@ def single_ice_cream(id):
         conn.execute(sql, (id,))
         conn.commit()
         return "The ice cream with id: {} has been deleted.".format(id), 200
-    
+
 @app.route("/users", methods=["GET", "POST"])
 def users():
     conn = db_connection()
@@ -117,10 +122,15 @@ def single_user(id):
         rows = cursor.fetchall()
         for r in rows:
             user = r
+        # if user is not None:
+        #     return jsonify(user), 200
+        # else:
+        #     return "User not found", 404
         if user is not None:
-            return jsonify(user), 200
+            user = {"id": user[0], "username": user[1], "password": user[2], "is_admin": user[3]}
+            return jsonify(user)
         else:
-            return "User not found", 404
+            return jsonify({"message": "User not found"}), 404
 
     if request.method == "PUT":
         sql = """UPDATE usernames
