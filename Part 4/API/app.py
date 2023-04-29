@@ -17,27 +17,29 @@ def db_connection():
 def ice_cream():
     conn = db_connection()
     cursor = conn.cursor()
-    
+
     if request.method=="GET":
-        cursor = conn.execute("SELECT * FROM ice_cream")
+        cursor.execute("SELECT * FROM ice_cream")
+
         ice_cream = [
-            dict(id=row[0], name=row[1], price = row[2])
+            dict(id=row[0], name=row[1], price = row[2], image = row[3])
             for row in cursor.fetchall()
         ]
         if ice_cream is not None:
             return jsonify(ice_cream)
-    
+
     if request.method == "POST":
         new_name = request.form["name"]
         new_price = request.form["price"]
-        
-        sql = """INSERT INTO ice_cream (name, price)
-                 VALUES (?,?)"""
-        
+        new_image = request.form["image"]
+
+        sql = """INSERT INTO ice_cream (name, price, image)
+                 VALUES (?,?,?)"""
+
         cursor = cursor.execute(sql, (new_name, new_price))
         conn.commit()
         return f"Ice creame with the id: {cursor.lastrowid} created sussessfully", 201
-   
+
 @app.route("/ice_cream/<int:id>", methods=["GET", "PUT", "DELETE"])
 def single_ice_cream(id):
     conn = db_connection()
@@ -56,17 +58,20 @@ def single_ice_cream(id):
     if request.method == "PUT":
         sql = """UPDATE ice_cream
                 SET name=?,
-                    price=?
+                    price=?,
+                    image=?
                 WHERE id=? """
 
         name = request.form["name"]
         price = request.form["price"]
+        image = request.form["image"]
         updated_ice_cream = {
             "id": id,
             "name": name,
-            "price": price
+            "price": price,
+            "image": image
         }
-        conn.execute(sql, (name, price, id))
+        conn.execute(sql, (name, price, image, id))
         conn.commit()
         return jsonify(updated_ice_cream)
 
