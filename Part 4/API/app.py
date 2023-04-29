@@ -80,6 +80,74 @@ def single_ice_cream(id):
         conn.execute(sql, (id,))
         conn.commit()
         return "The ice cream with id: {} has been deleted.".format(id), 200
+    
+@app.route("/users", methods=["GET", "POST"])
+def users():
+    conn = db_connection()
+    cursor = conn.cursor()
+
+    if request.method == "GET":
+        cursor.execute("SELECT * FROM usernames")
+        users = [
+            dict(id=row[0], username=row[1], password=row[2], is_admin=row[3])
+            for row in cursor.fetchall()
+        ]
+        if users is not None:
+            return jsonify(users)
+
+    if request.method == "POST":
+        new_username = request.form["username"]
+        new_password = request.form["password"]
+        is_admin = request.form.get("is_admin", default=0, type=int)
+
+        sql = """INSERT INTO usernames (username, password, is_admin)
+                 VALUES (?,?,?)"""
+
+        cursor = cursor.execute(sql, (new_username, new_password, is_admin))
+        conn.commit()
+        return f"User with the id: {cursor.lastrowid} created successfully", 201
+
+@app.route("/users/<int:id>", methods=["GET", "PUT", "DELETE"])
+def single_user(id):
+    conn = db_connection()
+    cursor = conn.cursor()
+    user = None
+    if request.method == "GET":
+        cursor.execute("SELECT * FROM usernames WHERE id=?", (id,))
+        rows = cursor.fetchall()
+        for r in rows:
+            user = r
+        if user is not None:
+            return jsonify(user), 200
+        else:
+            return "User not found", 404
+
+    if request.method == "PUT":
+        sql = """UPDATE usernames
+                SET username=?,
+                    password=?,
+                    is_admin=?
+                WHERE id=? """
+
+        username = request.form["username"]
+        password = request.form["password"]
+        is_admin = request.form.get("is_admin", default=0, type=int)
+        updated_user = {
+            "id": id,
+            "username": username,
+            "password": password,
+            "is_admin": is_admin
+        }
+        conn.execute(sql, (username, password, is_admin, id))
+        conn.commit()
+        return jsonify(updated_user)
+
+    if request.method == "DELETE":
+        sql = """ DELETE FROM usernames WHERE id=? """
+        conn.execute(sql, (id,))
+        conn.commit()
+        return "User with id: {} has been deleted.".format(id), 200
+
 
 
 if __name__ == '__main__':
