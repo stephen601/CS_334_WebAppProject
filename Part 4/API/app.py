@@ -47,18 +47,16 @@ def single_ice_cream(id):
     ice_cream = None
     if request.method == "GET":
         cursor.execute("SELECT * FROM ice_cream WHERE id=?", (id,))
-        rows = cursor.fetchall()
-        for r in rows:
-            ice_cream = r
-        # if ice_cream is not None:
-        #     return jsonify(ice_cream), 200
-        # else:
-        #     return "Something wrong", 404
-        if ice_cream is not None:
-            ice_cream = {"id": ice_cream[0], "name": ice_cream[1], "price": ice_cream[2], "image": ice_cream[3]}
+        ice_cream = [
+            dict(ice_cream_id=row[0], name=row[1], price=row[2], image=row[3])
+            for row in cursor.fetchall()
+        ]
+
+        if ice_cream:
             return jsonify(ice_cream)
         else:
-            return jsonify({"message": "Ice cream not found"}), 404
+            return f"No orders found for user with id: {id}", 404
+
 
     if request.method == "PUT":
         sql = """UPDATE ice_cream
@@ -85,7 +83,7 @@ def single_ice_cream(id):
         conn.execute(sql, (id,))
         conn.commit()
         return "The ice cream with id: {} has been deleted.".format(id), 200
-
+    
 @app.route("/users", methods=["GET", "POST"])
 def users():
     conn = db_connection()
@@ -119,18 +117,16 @@ def single_user(id):
     user = None
     if request.method == "GET":
         cursor.execute("SELECT * FROM usernames WHERE id=?", (id,))
-        rows = cursor.fetchall()
-        for r in rows:
-            user = r
-        # if user is not None:
-        #     return jsonify(user), 200
-        # else:
-        #     return "User not found", 404
-        if user is not None:
-            user = {"id": user[0], "username": user[1], "password": user[2], "is_admin": user[3]}
-            return jsonify(user)
+        users = [
+            dict(user_id=row[0], username=row[1], password=row[2], is_admin=row[3])
+            for row in cursor.fetchall()
+        ]
+
+        if users:
+            return jsonify(users)
         else:
-            return jsonify({"message": "User not found"}), 404
+            return f"No users found for user with id: {id}", 404
+
 
     if request.method == "PUT":
         sql = """UPDATE usernames
@@ -158,6 +154,92 @@ def single_user(id):
         conn.commit()
         return "User with id: {} has been deleted.".format(id), 200
 
+@app.route("/orders", methods=["GET", "POST"])
+def orders():
+    conn = db_connection()
+    cursor = conn.cursor()
+
+    if request.method == "GET":
+        cursor.execute("SELECT * FROM orders")
+        orders = [
+            dict(id=row[0], user_id=row[1], ice_cream_id=row[2], quantity=row[3])
+            for row in cursor.fetchall()
+        ]
+        if orders is not None:
+            return jsonify(orders)
+
+    if request.method == "POST":
+        user_id = request.form["user_id"]
+        ice_cream_id = request.form["ice_cream_id"]
+        quantity = request.form["quantity"]
+        total_price = request.form["total_price"]
+        order_date = request.form["order_date"]
+
+        sql = """INSERT INTO orders (username_id, ice_cream_id, quantity, total_price, order_date)
+                 VALUES (?,?,?,?,?)"""
+
+        cursor = cursor.execute(sql, (user_id, ice_cream_id, quantity, total_price, order_date))
+        conn.commit()
+        return f"Order with id: {cursor.lastrowid} created successfully", 201
+
+@app.route("/orders/<int:id>", methods=["GET", "PUT", "DELETE"])
+def single_order(id):
+    conn = db_connection()
+    cursor = conn.cursor()
+    order = None
+    if request.method == "GET":
+        cursor.execute("SELECT * FROM orders WHERE id=?", (id,))
+        orders = [
+            dict(order_id=row[0], ice_cream_id=row[1], user_id=row[2], quantity=row[3], total_price=row[4], order_date=row[5])
+            for row in cursor.fetchall()
+        ]
+
+        if orders:
+            return jsonify(orders)
+        else:
+            return f"No orders found for user with id: {id}", 404
+
+    if request.method == "PUT":
+        sql = """UPDATE orders
+                SET user_id=?,
+                    ice_cream_id=?,
+                    quantity=?
+                WHERE id=? """
+
+        user_id = request.form["user_id"]
+        ice_cream_id = request.form["ice_cream_id"]
+        quantity = request.form["quantity"]
+        updated_order = {
+            "id": id,
+            "user_id": user_id,
+            "ice_cream_id": ice_cream_id,
+            "quantity": quantity
+        }
+        conn.execute(sql, (user_id, ice_cream_id, quantity, id))
+        conn.commit()
+        return jsonify(updated_order)
+
+    if request.method == "DELETE":
+        sql = """ DELETE FROM orders WHERE id=? """
+        conn.execute(sql, (id,))
+        conn.commit()
+        return "Order with id: {} has been deleted.".format(id), 200
+
+@app.route("/orders/user/<int:username_id>", methods=["GET"])
+def orders_by_user_id(username_id):
+    conn = db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM orders WHERE username_id=?", (username_id,))
+    orders = [
+        dict(order_id=row[0], ice_cream_id=row[1], user_id=row[2], quantity=row[3], total_price=row[4], order_date=row[5])
+        for row in cursor.fetchall()
+    ]
+
+    if orders:
+        return jsonify(orders)
+    else:
+        return f"No orders found for user with id: {username_id}", 404
 
 
 if __name__ == '__main__':
