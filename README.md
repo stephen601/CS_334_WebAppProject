@@ -10,7 +10,7 @@
 ## 3. Notes:
   * None at the moment.
 ## 4. API Instructions 
-  * https://teamcs334.pythonanywhere.com/ice_cream
+  ### https://teamcs334.pythonanywhere.com/ice_cream
          * GET will show all ice cream
          * POST will add a new flavor
   * https://teamcs334.pythonanywhere.com/ice_cream/<ice_cream_id>
