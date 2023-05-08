@@ -1,10 +1,22 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_mail import Mail
+from flask_mail import Mail, Message
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ice_cream.sqlite'
 db = SQLAlchemy(app)
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USERNAME"] = "teamcs334@gmail.com"
+app.config["MAIL_PASSWORD"] = "odwgaoszlvldgddr"
+
+
+mail = Mail(app)
 
 class IceCream(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -194,6 +206,39 @@ def single_order(id):
             return f"Order with id: {id} deleted successfully", 200
         else:
             return f"No order found for id: {id}", 404
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    # parse JSON data from request body
+    data = request.get_json()
+
+    # extract recipient email and order details from JSON data
+    recipient_email = data['email']
+    name = data['name']
+    ice_cream_flavors = data['ice_cream']
+    total = data['total']
+
+    # create message subject line
+    subject = f"Ice cream order for {name}"
+
+    # create message body
+    body = "You have ordered:\n\n"
+    for flavor in ice_cream_flavors:
+        amount = flavor['amount']
+        flavor_name = flavor['flavor']
+        body += f"{amount} {flavor_name} ice cream(s)\n"
+
+    body += f"\nTotal: ${format(total, '.2f')}\n\nThank you for your business!"
+
+    # create message object
+    msg = Message(subject, sender="teamcs334@gmail.com", recipients=[recipient_email])
+    msg.body = body
+
+    # send message
+    mail.send(msg)
+
+    return "Email sent!"
+
+
 
 @app.route("/orders/user/<int:username_id>", methods=["GET"])
 def orders_by_user_id(username_id):
