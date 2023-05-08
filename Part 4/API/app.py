@@ -128,18 +128,18 @@ def order():
         db.session.add(new_order)
         db.session.commit()
         return f"Order with id: {new_order.id} created successfully", 201
-    
+
 @app.route("/orders/<int:id>", methods=["GET", "PUT", "DELETE"])
 def single_order(id):
     order = Orders.query.get(id)
     if request.method == "GET":
         if order:
             return jsonify({
-                "id": order.id, 
-                "ice_cream_id": order.ice_cream_id, 
-                "username_id": order.username_id, 
-                "quantity": order.quantity, 
-                "total_price": order.total_price, 
+                "id": order.id,
+                "ice_cream_id": order.ice_cream_id,
+                "username_id": order.username_id,
+                "quantity": order.quantity,
+                "total_price": order.total_price,
                 "order_date": order.order_date,
                 "ice_cream": {
                     "id": order.ice_cream.id,
@@ -166,11 +166,11 @@ def single_order(id):
 
             db.session.commit()
             return jsonify({
-                "id": order.id, 
-                "ice_cream_id": order.ice_cream_id, 
-                "username_id": order.username_id, 
-                "quantity": order.quantity, 
-                "total_price": order.total_price, 
+                "id": order.id,
+                "ice_cream_id": order.ice_cream_id,
+                "username_id": order.username_id,
+                "quantity": order.quantity,
+                "total_price": order.total_price,
                 "order_date": order.order_date,
                 "ice_cream": {
                     "id": order.ice_cream.id,
@@ -216,5 +216,11 @@ def orders_by_user_id(username_id):
     else:
         return f"No orders found for user with id: {username_id}", 404
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 if __name__ == '__main__':
     app.run(debug=True)
