@@ -42,3 +42,6 @@
   * DELETE will delete the order of the order id provided.
   ### http://teamcs334.pythonanywhere.com/send_email
   * POST will send an email with order information.
+     * {"email": "recipient email","name": "recipient name","ice_cream": [{"flavor": "ice cream name", "amount": #}],"total": 20.00}
+     * {"email": "teamcs334@gmail.com","name": "Jax","ice_cream": [{"flavor": "chocolate", "amount": 2},{"flavor": "vanilla", "amount": 1},{"flavor": "strawberry", "amount": 3}],"total": 20.00}
+
