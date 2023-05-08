@@ -42,23 +42,3 @@
   * DELETE will delete the order of the order id provided.
   ### http://teamcs334.pythonanywhere.com/send_email
   * POST will send an email with order information.
-  *JSON should be formatted as follows:
-  {
-  "email": "Reciepient Address",
-  "name": "Reciepient Name",
-  "ice_cream": [
-    {"flavor": "flavor name", "amount": #}
-  ],
-  "total": ###
-  }
-  *Example JSOM:
-  {
-  "email": "teamcs334@gmail.com",
-  "name": "Jax",
-  "ice_cream": [
-    {"flavor": "chocolate", "amount": 2},
-    {"flavor": "vanilla", "amount": 1},
-    {"flavor": "strawberry", "amount": 3}
-  ],
-  "total": 20.00
-}
