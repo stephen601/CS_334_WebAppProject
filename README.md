@@ -18,3 +18,19 @@
   * GET will show the ice cream with the provided ice_cream_id
   * PUT will modify that ice cream's data based of ice_cream_id
   * DELETE will delete that ice cream's data based of ice_cream_id
+  ### https://teamcs334.pythonanywhere.com/user
+  * GET will show all users
+  * POST will add a new user
+  ### https://teamcs334.pythonanywhere.com/user/<user_id>
+  * Ex:https://teamcs334.pythonanywhere.com/user/1
+  * GET will show the user with the provided user id.
+  * PUT will update the user info with the provided user id.
+  * DELETE will delete the user of the provided user id.
+  ### https://teamcs334.pythonanywhere.com/orders
+  * GET will show all orders
+  * POST will add a new order
+  ### https://teamcs334.pythonanywhere.com/orders/<order_id>
+  * Ex:https://teamcs334.pythonanywhere.com/orders/8
+  * GET will show the order of the order id provided
+  * PUT will update the order of the order if provided
+  * DELETE will delete the order of the order id provided.
