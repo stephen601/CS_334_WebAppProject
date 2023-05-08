@@ -17,6 +17,7 @@
   * Ex:https://teamcs334.pythonanywhere.com/ice_cream/1
   * GET will show the ice cream with the provided ice_cream_id
   * PUT will modify that ice cream's data based of ice_cream_id
+    ** PUT required variables: name, image, and price
   * DELETE will delete that ice cream's data based of ice_cream_id
   ### https://teamcs334.pythonanywhere.com/user
   * GET will show all users
