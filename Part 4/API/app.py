@@ -206,21 +206,18 @@ def single_order(id):
             return f"Order with id: {id} deleted successfully", 200
         else:
             return f"No order found for id: {id}", 404
+
 @app.route('/send_email', methods=['POST'])
 def send_email():
-    # parse JSON data from request body
     data = request.get_json()
 
-    # extract recipient email and order details from JSON data
     recipient_email = data['email']
     name = data['name']
     ice_cream_flavors = data['ice_cream']
     total = data['total']
 
-    # create message subject line
     subject = f"Ice cream order for {name}"
 
-    # create message body
     body = "You have ordered:\n\n"
     for flavor in ice_cream_flavors:
         amount = flavor['amount']
@@ -229,11 +226,9 @@ def send_email():
 
     body += f"\nTotal: ${format(total, '.2f')}\n\nThank you for your business!"
 
-    # create message object
     msg = Message(subject, sender="teamcs334@gmail.com", recipients=[recipient_email])
     msg.body = body
 
-    # send message
     mail.send(msg)
 
     return "Email sent!"
