@@ -8,45 +8,59 @@ window.onload = function(){
 
         console.log(theUsername);
 
-        fetch('./users.json')
+        theURL = "https://teamcs334.pythonanywhere.com/user";
+
+        fetch(theURL)
                     .then((response) => response.json())
                     .then((orderElements) => {
 
-                        foundUser = false;
+                        let foundAdmin = false;
+                        let foundUser = false;
 
-                        for(let i=0; i<orderElements.length; i++){
 
-                            if(theUsername == orderElements[i].username){
+                            for(let i=0; i<orderElements.length; i++){
 
-                                foundUser = true;
+                                if(orderElements[i].is_admin == 1){
 
-                                if(thePassword == orderElements[i].password){
+                                    foundAdmin = true;
 
-                                    window.location.replace("./manager.html");
+                                    if(theUsername == orderElements[i].username){
+
+                                        foundUser = true;
+    
+                                        if(thePassword == orderElements[i].password){
+    
+                                            window.location.replace("./manager.html");
+    
+                                        }
+                                        else{
+    
+                                            alert("Invalid Credentials, please try again.");
+    
+                                        }
+    
+                                    }
+                                    else{
+    
+                                    }
+
 
                                 }
                                 else{
 
-                                    alert("Invalid Credentials, please try again.");
-
                                 }
 
+                                
+
+                            }
+
+                            if(!foundUser || !foundAdmin){
+                                alert("Invalid Credentials, please try again.");
                             }
                             else{
 
                             }
-
-                        }
-
-                        if(!foundUser){
-                            alert("Invalid Credentials, please try again.");
-                        }
-                        else{
-
-                        }
-
-
-
+                        
                     });
 
     })
