@@ -86,7 +86,7 @@ def single_ice_cream(id):
 def user():
     if request.method == "GET":
         users = Usernames.query.all()
-        return jsonify([{"id": u.id, "username": u.username, "is_admin": u.is_admin} for u in users])
+        return jsonify([{"id": u.id, "username": u.username, "password":u.password, "is_admin": u.is_admin} for u in users])
 
     if request.method == "POST":
         new_username = request.form["username"]
@@ -102,7 +102,7 @@ def single_user(id):
     user = Usernames.query.get(id)
     if request.method == "GET":
         if user:
-            return jsonify({"id": user.id, "username": user.username, "is_admin": user.is_admin})
+            return jsonify({"id": user.id, "username": user.username, "password":user.password, "is_admin": user.is_admin})
         else:
             return f"No user found for id: {id}", 404
 
