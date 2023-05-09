@@ -185,12 +185,12 @@ window.onload = function(){
         for(let i = 0; i < refundOrderButtons.length; i++){
             refundOrderButtons[i].addEventListener("click", function(){
 
-                // specificOrder = viewOrderButtons[i].id;
+                specificOrder = viewOrderButtons[i].id;
 
-                // lastIndex = specificOrder.lastIndexOf(" ");
-                // specificOrder = specificOrder.substring(0, lastIndex);
+                lastIndex = specificOrder.lastIndexOf(" ");
+                specificOrder = specificOrder.substring(0, lastIndex);
 
-                // specificOrder = specificOrder.toString();
+                specificOrder = specificOrder.toString();
                 
                 
 
@@ -201,6 +201,17 @@ window.onload = function(){
                 }
                 else{
                     alert("Order refunded.");
+
+                    var theFetchURL = "https://teamcs334.pythonanywhere.com/orders/"+ specificOrder;
+                    fetch(theFetchURL,
+                    {
+                        method: "DELETE"
+                    
+                    }).then(res => {
+                        console.log("Request complete! response:", res);
+                        window.location.reload();
+                    });
+
                 }
 
                     
