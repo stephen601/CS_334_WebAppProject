@@ -1,1 +1,1 @@
-Stephen Washington: Database, API, and Readme
+Stephen Washington: Database, API, Email, and Readme
