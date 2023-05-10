@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -112,9 +113,9 @@
       });
     }
 
-    async function sendOrderData(userId, quantity, totalPrice, orderDate, ice_Cream_Id) {
+    async function sendOrderData(user_Id, quantity, totalPrice, orderDate, ice_Cream_Id) {
       const data = {
-        user_id: userId,
+        user_id: user_Id,
         quantity: quantity,
         total_price: totalPrice,
         order_date: orderDate,
@@ -137,42 +138,56 @@
     }
 
     function addToCart(item) {
-      const cartItems = document.querySelector('.cart-items');
-      const cartTotal = document.querySelector('.cart-total-price');
-      const cartRow = document.createElement('div');
-      cartRow.className = 'cart-row';
-      cartItems.appendChild(cartRow);
-      const cartItemImageContainer = document.createElement('div');
-      cartItemImageContainer.className = 'cart-item cart-column';
-      const cartItemImage = document.createElement('img');
-      cartItemImage.src = item.image;
-      cartItemImage.style.width = '50px';
-      cartItemImage.style.height = '50px';
-      cartItemImageContainer.appendChild(cartItemImage);
-      cartRow.appendChild(cartItemImageContainer);
-      const cartItem = document.createElement('span');
-      cartItem.className = 'cart-item cart-column';
-      cartItem.textContent = item.name;
-      cartRow.appendChild(cartItem);
-      const cartPrice = document.createElement('span');
-      cartPrice.className = 'cart-price cart-column';
-      cartPrice.textContent = `$${item.price}`;
-      cartRow.appendChild(cartPrice);
-      const cartQuantity = document.createElement('span');
-      cartQuantity.className = 'cart-quantity cart-column';
-      cartQuantity.textContent = '1';
-      cartRow.appendChild(cartQuantity);
-      cartRow.appendChild(cartQuantity);
-      const currentTotal = parseFloat(cartTotal.textContent.slice(1));
-      const newTotal = (currentTotal + parseFloat(item.price)).toFixed(2);
-      cartTotal.textContent = `$${newTotal}`;
-      const userId = Math.floor(Math.random() * 100) + 1;
-      const quantity = 1;
-      const totalPrice = parseFloat(item.price);
-      const orderDate = new Date().toISOString().slice(0, 10);
-      const iceCreamId = item.id;
-      sendOrderData(userId, quantity, totalPrice, orderDate, iceCreamId);
+    const cartItems = document.querySelector('.cart-items');
+    const cartTotal = document.querySelector('.cart-total-price');
+    const existingCartItem = Array.from(cartItems.children).find(cartItem => cartItem.querySelector('.cart-item').textContent === item.name);
+    if (existingCartItem) {
+        const cartQuantity = existingCartItem.querySelector('.cart-quantity');
+        cartQuantity.textContent = parseInt(cartQuantity.textContent) + 1;
+    } else {
+        const cartRow = document.createElement('div');
+        cartRow.className = 'cart-row';
+        cartItems.appendChild(cartRow);
+        const cartItemImageContainer = document.createElement('div');
+        cartItemImageContainer.className = 'cart-item cart-column';
+        const cartItemImage = document.createElement('img');
+        cartItemImage.src = item.image;
+        cartItemImage.style.width = '50px';
+        cartItemImage.style.height = '50px';
+        cartItemImageContainer.appendChild(cartItemImage);
+        cartRow.appendChild(cartItemImageContainer);
+        const cartItem = document.createElement('span');
+        cartItem.className = 'cart-item cart-column';
+        cartItem.textContent = item.name;
+        cartRow.appendChild(cartItem);
+        const cartPrice = document.createElement('span');
+        cartPrice.className = 'cart-price cart-column';
+        cartPrice.textContent = `$${item.price}`;
+        cartRow.appendChild(cartPrice);
+        const cartQuantity = document.createElement('span');
+        cartQuantity.className = 'cart-quantity cart-column';
+        cartQuantity.textContent = '1';
+        cartRow.appendChild(cartQuantity);
     }
+    const user_Id = Math.floor(Math.random() * 100) + 1;
+    const quantity = Array.from(cartItems.children).reduce((total, cartItem) => total + parseInt(cartItem.querySelector('.cart-quantity').textContent), 0);
+    
+    // Calculate the total price based on the quantity of each item
+    const newTotal = Array.from(cartItems.children).reduce((total, cartItem) => {
+        const itemPrice = parseFloat(cartItem.querySelector('.cart-price').textContent.slice(1));
+        const itemQuantity = parseInt(cartItem.querySelector('.cart-quantity').textContent);
+        return total + (itemPrice * itemQuantity);
+    }, 0).toFixed(2);
+         
+    
+    cartTotal.textContent = `$${newTotal}`;
+    const totalPrice = parseFloat(cartTotal.textContent.slice(1));
+    const orderDate = new Date().toISOString().slice(0, 10);
+    const iceCreamId = item.id;
+    sendOrderData(user_Id, quantity, totalPrice, orderDate, iceCreamId);
+}
+
+
 
     async function purchaseItems() {
       const name = prompt("Please enter your name");
@@ -295,4 +310,3 @@
         </footer>
     </body>
 </html>
-
